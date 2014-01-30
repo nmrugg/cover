@@ -73,7 +73,8 @@ function generate(pw, ph, pc, pt)
         spine;
     
     if (!pw || !ph || !pc) {
-        console.log("Need page width, height, and count.")
+        console.log("Need page width (in inches), height, and count.")
+        console.log("Usage: page_width page_height page_count [page_type]")
         return 1;
     }
     
