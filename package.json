@@ -1,0 +1,26 @@
+{
+  "name": "cover_maker",
+  "description": "CreateSpace Cover Generator",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nathan Rugg",
+    "email": "nmrugg@gmail.com"
+  },
+  "keywords": [
+    "CreateSpace",
+    "book",
+    "cover"
+  ],
+  "main": "cover_maker.js",
+  "bin": {
+    "isbn.js": "bin/cover_maker.js"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://nate.mit-license.org/"
+    }
+  ],
+  "readmeFilename": "readme",
+  "dependencies": {}
+}
