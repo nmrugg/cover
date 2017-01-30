@@ -28,16 +28,29 @@
     div {
       padding: 2px;
     }
+    a {
+      text-decoration: none;
+      color: #3086b9;
+      font-family: arial;
+    }
+    h1 {
+        margin: 4px 0;
+        font-size: 20px;
+    }
+    body {
+        font-family: arial;
+    }
     </style>
     <script src=cover_maker.js></script>
   </head>
   <body>
+    <h1><a href=https://github.com/nmrugg/cover>CreateSpace SVG cover generator</a></h1>
     <div>
       <label>
-        Page Width: <input type=text id=pw>
+        Page Width (in): <input type=text id=pw title="Page width in inches">
       </label>
       <label>
-        Page Height: <input type=text id=ph>
+        Page Height (in): <input type=text id=ph title="Page height in inches">
       </label>
       <label>
         Page Count: <input type=text id=pc>
@@ -102,25 +115,32 @@
         var code;
         var el;
         
-        code = generate(pwEl.value, phEl.value, pcEl.value, ptEl.value);
-        outputEl.innerHTML = "";
-        
-        el = document.createElement("a");
-        el.id = "saveButton";
-        el.textContent = "Download";
-        el.href= "data:image/svg+xml;utf8," + code;
-        el.download = "cover-" + [pwEl.value, phEl.value, pcEl.value, ptEl.value].join("-") + ".svg";
-        outputEl.appendChild(el);
-        
-        el = document.createElement("div");
-        el.textContent = "SVG text:"
-        outputEl.appendChild(el);
-        
-        el = document.createElement("textarea");
-        el.id = "svgOutput";
-        el.value = code;
-        outputEl.appendChild(el);
+        if (pwEl.value && phEl.value && pcEl.value) {
+            code = generate(pwEl.value, phEl.value, pcEl.value, ptEl.value);
+            outputEl.innerHTML = "";
+            
+            el = document.createElement("a");
+            el.id = "saveButton";
+            el.textContent = "Download";
+            el.href= "data:image/svg+xml;utf8," + code;
+            el.download = "cover-" + [pwEl.value, phEl.value, pcEl.value, ptEl.value].join("-") + ".svg";
+            outputEl.appendChild(el);
+            
+            el = document.createElement("div");
+            el.textContent = "SVG text:"
+            outputEl.appendChild(el);
+            
+            el = document.createElement("textarea");
+            el.id = "svgOutput";
+            el.value = code;
+            outputEl.appendChild(el);
+        }
     }
+    
+    pwEl.oninput = gen;
+    phEl.oninput = gen;
+    pcEl.oninput = gen;
+    ptEl.oninput = gen;
     
     genEl.onclick = gen;
     
