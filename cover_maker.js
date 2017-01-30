@@ -113,6 +113,11 @@ function hightlight(str)
     return color(33, str);
 }
 
+function note(str)
+{
+    return color(36, str);
+}
+
 if (typeof module === "object") {
     module.exports = generate;
 
@@ -125,11 +130,12 @@ if (typeof module === "object") {
                 console.log("Invalid input");
             }
             console.log("");
-            console.log("Usage: cover_maker.js Page_Width Page_Height Page_Count [Page_Type]");
+            console.log("Usage: " + hightlight("cover_maker.js") + " " + note("Page_Width") + " " + note("Page_Height") + " " + note("Page_Count") + " [" + note("Page_Type") + "]");
             console.log("");
-            console.log("Page_Width and Page_Height must be in inches.");
-            console.log("Page_Type can be " + hightlight("white") + ", " + hightlight("cream") + ", or " + hightlight("color") + ".");
-            console.log("Page_Type defaults to " + hightlight("white") + ".");
+            console.log(note("Page_Width") + " and " + note("Page_Height") + " must be in inches.");
+            console.log(note("Page_Count") + " is the total number of pages in the book (each leaf is two pages).");
+            console.log(note("Page_Type") + " can be " + hightlight("white") + ", " + hightlight("cream") + ", or " + hightlight("color") + ".");
+            console.log(note("Page_Type") + " defaults to " + hightlight("white") + ".");
             console.log("");
         }
     }
