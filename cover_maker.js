@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 /// Nathan Rugg (c) 2017
 /// License: MIT (nate.mit-license.org)
 /// Create Space cover generator
@@ -21,7 +19,7 @@ function create_grid(w, h, spine, pw, pc)
         center = w / 2,
         half_spine = spine / 2,
         trim_line_color = "0000ff",
-        center_line_color = "ffff00",
+        center_line_color = "eeee00",
         half_pw = pw / 2;
     
     function get_grid_svg(x, y, color, opacity)
@@ -54,7 +52,7 @@ function create_grid(w, h, spine, pw, pc)
     grid_str += get_grid_svg(center + half_spine + safety, 0, trim_line_color, light_op);
     
     /// Mark page centers
-    grid_str += get_grid_svg(center, 0, center_line_color, light_op);
+    grid_str += get_grid_svg(center, 0, center_line_color, dark_op);
     grid_str += get_grid_svg(half_pw + trim, 0, center_line_color, dark_op);
     grid_str += get_grid_svg(center + half_spine + half_pw, 0, center_line_color, dark_op);
     
