@@ -86,6 +86,9 @@ function generate(pw, ph, pc, pt)
         return new Error("Need page width (in inches), height, and count.\nUsage: page_width page_height page_count [page_type]");
     }
     
+    /// Make page count even since each page has two sides.
+    pc += pc % 2
+    
     if (!pt) {
         pt = "white";
     }
