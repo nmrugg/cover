@@ -1,0 +1,19 @@
+Description:
+
+A pure JavaScript CreateSpace SVG cover generator
+
+Generates an SVG with trim and spin grid lines corresponding to CreateSpace's requirements.
+See https://www.createspace.com/Products/Book/CoverPDF.jsp for details.
+
+Install:
+
+npm install -g cover_maker
+
+Usage: cover_maker.js Page_Width Page_Height Page_Count [Page_Type]
+
+Page_Width and Page_Height must be in inches.
+Page_Count is the total number of pages in the book (each leaf is two pages).
+Page_Type can be white, cream, or color.
+Page_Type defaults to white.
+
+Demo: https://nmrugg.github.io/cover/demo.html
