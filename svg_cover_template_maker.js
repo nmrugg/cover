@@ -1,3 +1,9 @@
+#!/usr/bin/env node
+
+/// Nathan Rugg (c) 2017
+/// License: MIT (nate.mit-license.org)
+/// Create Space cover generator
+
 var trim = 0.125,
     safety = 0.125,
     thicknesses = {
@@ -72,15 +78,13 @@ function generate(pw, ph, pc, pt)
         w,
         spine;
     
-    if (!pw || !ph || !pc) {
-        console.log("Need page width (in inches), height, and count.")
-        console.log("Usage: page_width page_height page_count [page_type]")
-        return 1;
-    }
-    
     pw = Number(pw);
     ph = Number(ph);
     pc = Number(pc);
+    
+    if (!pw || !ph || !pc) {
+        return new Error("Need page width (in inches), height, and count.\nUsage: page_width page_height page_count [page_type]");
+    }
     
     if (!pt) {
         pt = "white";
@@ -89,22 +93,44 @@ function generate(pw, ph, pc, pt)
     thickness = thicknesses[pt];
     
     if (!thickness) {
-        console.log("Page type " + pt + " is unknown. Please choose from white, cream, or color.")
-        return 2;
+        return new Error("Page type " + pt + " is unknown. Please choose from white, cream, or color.");
     }
     
     spine = pc * thickness;
     w = trim + pw + spine + pw + trim;
     h = trim + ph + trim;
     
-    return create_svg(w, h, spine, pw, pc)
+    return create_svg(w, h, spine, pw, pc);
 }
 
-if (typeof module !== "undefined") {
+function color(color_code, str)
+{
+    return "\u001B[" + color_code + "m" + str + "\u001B[0m";
+}
+
+function hightlight(str)
+{
+    return color(33, str);
+}
+
+if (typeof module === "object") {
+    module.exports = generate;
+
     /// Was this called directly?
-    if (require.main === module) {
-        console.log(generate(process.argv[2], process.argv[3], process.argv[4], process.argv[5]));
-    } else {
-        module.exports = generate;
+    if (typeof require === "function" && require.main === module) {
+        if (require.main === module && process.argv[2] && process.argv[3] && process.argv[4]) {
+            console.log(generate(process.argv[2], process.argv[3], process.argv[4], process.argv[5]));
+        } else {
+            if (process.argv[2] || process.argv[3] || process.argv[4]) {
+                console.log("Invalid input");
+            }
+            console.log("");
+            console.log("Usage: cover_maker.js Page_Width Page_Height Page_Count [Page_Type]");
+            console.log("");
+            console.log("Page_Width and Page_Height must be in inches.");
+            console.log("Page_Type can be " + hightlight("white") + ", " + hightlight("cream") + ", or " + hightlight("color") + ".");
+            console.log("Page_Type defaults to " + hightlight("white") + ".");
+            console.log("");
+        }
     }
 }
