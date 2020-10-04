@@ -16,10 +16,12 @@ function create_grid(w, h, spine, pw, pc)
         c = -1,
         light_op = 0.15,
         dark_op = 0.3,
+        darker_op = 0.5,
         center = w / 2,
         half_spine = spine / 2,
-        trim_line_color = "0000ff",
+        trim_line_color = "0000ee",
         center_line_color = "eeee00",
+        border_line_color = "ee0000",
         half_pw = pw / 2;
     
     function get_grid_svg(x, y, color, opacity)
@@ -55,6 +57,10 @@ function create_grid(w, h, spine, pw, pc)
     grid_str += get_grid_svg(center, 0, center_line_color, dark_op);
     grid_str += get_grid_svg(half_pw + trim, 0, center_line_color, dark_op);
     grid_str += get_grid_svg(center + half_spine + half_pw, 0, center_line_color, dark_op);
+    
+    /// Mark border
+    grid_str += get_grid_svg(0, 0, border_line_color, darker_op);
+    grid_str += get_grid_svg(w, h, border_line_color, darker_op);
     
     return grid_str;
 }
