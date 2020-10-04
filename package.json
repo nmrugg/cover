@@ -1,6 +1,6 @@
 {
   "name": "cover_maker",
-  "description": "CreateSpace Cover Generator",
+  "description": "Kindle Direct Publishing Cover Generator",
   "version": "1.0.1",
   "author": {
     "name": "Nathan Rugg",
@@ -11,13 +11,14 @@
     "url": "git://github.com/nmrugg/cover.git"
   },
   "keywords": [
+    "Kindle Direct Publishing",
     "CreateSpace",
     "book",
     "cover"
   ],
   "main": "cover_maker.js",
   "bin": {
-    "isbn.js": "bin/cover_maker.js"
+    "cover_maker.js": "bin/cover_maker.js"
   },
   "licenses": [
     {

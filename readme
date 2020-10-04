@@ -1,6 +1,6 @@
 Description:
 
-A pure JavaScript CreateSpace SVG cover generator
+A pure JavaScript Kindle Direct Publishing SVG cover generator
 
 Generates an SVG with trim and spine guide lines corresponding to CreateSpace's requirements.
 See https://www.createspace.com/Products/Book/CoverPDF.jsp for details.

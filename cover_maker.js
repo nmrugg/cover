@@ -1,6 +1,6 @@
 /// Nathan Rugg (c) 2017
 /// License: MIT (nate.mit-license.org)
-/// Create Space cover generator
+/// Kindle Direct Publishing cover generator
 
 var trim = 0.125,
     safety = 0.125,
