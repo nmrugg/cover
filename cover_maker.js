@@ -109,7 +109,7 @@ function color(color_code, str)
     return "\u001B[" + color_code + "m" + str + "\u001B[0m";
 }
 
-function hightlight(str)
+function highlight(str)
 {
     return color(33, str);
 }
@@ -120,6 +120,9 @@ function note(str)
 }
 
 if (typeof module === "object") {
+    generate.generate = generate;
+    generate.highlight = highlight;
+    generate.note = note;
     module.exports = generate;
 
     /// Was this called directly?
@@ -131,12 +134,12 @@ if (typeof module === "object") {
                 console.log("Invalid input");
             }
             console.log("");
-            console.log("Usage: " + hightlight("cover_maker.js") + " " + note("Page_Width") + " " + note("Page_Height") + " " + note("Page_Count") + " [" + note("Page_Type") + "]");
+            console.log("Usage: " + highlight("cover_maker.js") + " " + note("Page_Width") + " " + note("Page_Height") + " " + note("Page_Count") + " [" + note("Page_Type") + "]");
             console.log("");
             console.log(note("Page_Width") + " and " + note("Page_Height") + " must be in inches.");
             console.log(note("Page_Count") + " is the total number of pages in the book (each leaf is two pages).");
-            console.log(note("Page_Type") + " can be " + hightlight("white") + ", " + hightlight("cream") + ", or " + hightlight("color") + ".");
-            console.log(note("Page_Type") + " defaults to " + hightlight("white") + ".");
+            console.log(note("Page_Type") + " can be " + highlight("white") + ", " + highlight("cream") + ", or " + highlight("color") + ".");
+            console.log(note("Page_Type") + " defaults to " + highlight("white") + ".");
             console.log("");
         }
     }
